@@ -30,6 +30,8 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Order;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Collection;
 import java.util.List;
@@ -120,6 +122,7 @@ public class ConfigurationAsmGeneratorTest {
     }
 
     @Test
+    @Order(5)
     void testInternalRootConfiguration() throws Exception {
         DynamicConfiguration<?, ?> config = generator.instantiateCfg(TestRootConfiguration.KEY, changer);
 
@@ -163,6 +166,7 @@ public class ConfigurationAsmGeneratorTest {
     }
 
     @Test
+    @Order(10)
     void testInternalSubConfiguration() throws Exception {
         DynamicConfiguration<?, ?> config = generator.instantiateCfg(TestRootConfiguration.KEY, changer);
 
@@ -203,6 +207,7 @@ public class ConfigurationAsmGeneratorTest {
     }
 
     @Test
+    @Order(1)
     void testInternalNamedConfiguration() throws Exception {
         DynamicConfiguration<?, ?> config = generator.instantiateCfg(TestRootConfiguration.KEY, changer);
 
@@ -234,6 +239,7 @@ public class ConfigurationAsmGeneratorTest {
     }
 
     @Test
+    @Order(8)
     void testConstructInternalConfig() {
         InnerNode innerNode = generator.instantiateNode(TestRootConfiguration.KEY.schemaClass());
 
@@ -259,6 +265,7 @@ public class ConfigurationAsmGeneratorTest {
     }
 
     @Test
+    @Order(2)
     void testPolymorphicSubConfiguration() throws Exception {
         TestRootConfiguration rootConfig = (TestRootConfiguration) generator.instantiateCfg(TestRootConfiguration.KEY, changer);
 
@@ -351,6 +358,7 @@ public class ConfigurationAsmGeneratorTest {
     }
 
     @Test
+    @Order(4)
     void testPolymorphicErrors() {
         TestRootConfiguration rootConfig = (TestRootConfiguration) generator.instantiateCfg(TestRootConfiguration.KEY, changer);
 
@@ -386,6 +394,7 @@ public class ConfigurationAsmGeneratorTest {
     }
 
     @Test
+    @Order(3)
     void testPolymorphicNamedConfigurationAdd() throws Exception {
         TestRootConfiguration rootConfig = (TestRootConfiguration) generator.instantiateCfg(TestRootConfiguration.KEY, changer);
 
@@ -449,6 +458,7 @@ public class ConfigurationAsmGeneratorTest {
     }
 
     @Test
+    @Order(7)
     void testPolymorphicNamedConfigurationChange() throws Exception {
         TestRootConfiguration rootConfig = (TestRootConfiguration) generator.instantiateCfg(TestRootConfiguration.KEY, changer);
 
@@ -487,6 +497,7 @@ public class ConfigurationAsmGeneratorTest {
     }
 
     @Test
+    @Order(11)
     void testPolymorphicNamedConfigurationRemove() throws Exception {
         TestRootConfiguration rootConfig = (TestRootConfiguration) generator.instantiateCfg(TestRootConfiguration.KEY, changer);
 
@@ -503,6 +514,7 @@ public class ConfigurationAsmGeneratorTest {
      * Tests changing type of a Polymorphic Configuration to a type that has a field without a default value.
      */
     @Test
+    @Order(6)
     void testPolymorphicConfigurationNonDefaultValues() throws Exception {
         TestRootConfiguration rootConfig = (TestRootConfiguration) generator.instantiateCfg(TestRootConfiguration.KEY, changer);
 
@@ -517,6 +529,7 @@ public class ConfigurationAsmGeneratorTest {
     }
 
     @Test
+    @Order(12)
     void testNestedConfigurationWithInjectedNameField() throws Exception {
         InjectedNameRootConfiguration rootCfg =
                 (InjectedNameRootConfiguration) generator.instantiateCfg(InjectedNameRootConfiguration.KEY, changer);
@@ -549,6 +562,7 @@ public class ConfigurationAsmGeneratorTest {
     }
 
     @Test
+    @Order(9)
     void testNestedNamedConfigurationWithInjectedNameField() throws Exception {
         InjectedNameRootConfiguration rootCfg =
                 (InjectedNameRootConfiguration) generator.instantiateCfg(InjectedNameRootConfiguration.KEY, changer);
