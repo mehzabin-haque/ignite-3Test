@@ -98,6 +98,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+// import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Order;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
@@ -260,6 +263,7 @@ public class MockedStructuresTest extends IgniteAbstractTest {
      * Tests create a table through public API.
      */
     @Test
+    @Order(7)
     public void testCreateTable() {
         SqlQueryProcessor finalQueryProc = queryProc;
 
@@ -301,6 +305,7 @@ public class MockedStructuresTest extends IgniteAbstractTest {
      * Tests create a table with multiple pk through public API.
      */
     @Test
+    @Order(8)
     public void testCreateTableMultiplePk() {
         String curMethodName = getCurrentMethodName();
 
@@ -316,6 +321,7 @@ public class MockedStructuresTest extends IgniteAbstractTest {
      * Tests create and drop table through public API.
      */
     @Test
+    @Order(6)
     public void testDropTable() {
         String curMethodName = getCurrentMethodName();
 
@@ -348,6 +354,7 @@ public class MockedStructuresTest extends IgniteAbstractTest {
      * Tests alter and drop columns through public API.
      */
     @Test
+    @Order(9)
     public void testAlterAndDropSimpleCase() {
         SqlQueryProcessor finalQueryProc = queryProc;
 
@@ -396,6 +403,7 @@ public class MockedStructuresTest extends IgniteAbstractTest {
      * Tests alter add multiple columns through public API.
      */
     @Test
+    @Order(2)
     public void testAlterColumnsAddBatch() {
         String curMethodName = getCurrentMethodName();
 
@@ -420,6 +428,7 @@ public class MockedStructuresTest extends IgniteAbstractTest {
      * Tests alter drop multiple columns through public API.
      */
     @Test
+    @Order(4)
     public void testAlterColumnsDropBatch() {
         String curMethodName = getCurrentMethodName();
 
@@ -441,6 +450,7 @@ public class MockedStructuresTest extends IgniteAbstractTest {
      */
     @Disabled("https://issues.apache.org/jira/browse/IGNITE-16032")
     @Test
+    @Order(1)
     public void testCreateDropIndex() {
         SqlQueryProcessor finalQueryProc = queryProc;
 
@@ -480,6 +490,7 @@ public class MockedStructuresTest extends IgniteAbstractTest {
     }
 
     @Test
+    @Order(10)
     void createTableWithEngine() throws Exception {
         String method = getCurrentMethodName();
 
@@ -535,6 +546,7 @@ public class MockedStructuresTest extends IgniteAbstractTest {
     }
 
     @Test
+    @Order(5)
     void createTableWithTableOptions() {
         String method = getCurrentMethodName();
 
@@ -595,6 +607,7 @@ public class MockedStructuresTest extends IgniteAbstractTest {
     }
 
     @Test
+    @Order(3)
     void createTableWithDataStorageOptions() {
         String method = getCurrentMethodName();
 
